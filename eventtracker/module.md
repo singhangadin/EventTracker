@@ -30,5 +30,5 @@ EventTracker.track("checkout_started", mapOf("cart_size" to 3))
 
 | Package | Contents |
 |---------|----------|
-| `com.example.eventtracker` | Public API — `EventTracker`, `EventTrackerConfig`, `TrackEvent`, `Diagnostics` |
-| `com.example.eventtracker.adapter` | `EventAdapter` interface and built-in adapters |
+| `in.singhangad.eventtracker` | Public API — `EventTracker`, `EventTrackerConfig`, `TrackEvent`, `Diagnostics` |
+| `in.singhangad.eventtracker.adapter` | `EventAdapter` interface and built-in adapters |
