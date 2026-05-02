@@ -302,7 +302,7 @@ class BackendBatchAdapter(
         root.put("device", deviceInfo.toJson())
 
         val eventsArray = JSONArray()
-        events.forEach { e ->
+        for (e in events) {
             val obj = JSONObject()
             obj.put("id", e.id)
             obj.put("name", e.name)
@@ -407,7 +407,7 @@ private fun EventEntity.toDeadLetterEntity(
 /** Serialise a Map<String, Any?> to a JSON string, coercing non-primitive values to strings. */
 internal fun mapToJson(map: Map<String, Any?>): String {
     val obj = JSONObject()
-    map.forEach { (key, value) ->
+    for ((key, value) in map) {
         when (value) {
             null -> obj.put(key, JSONObject.NULL)
             is String -> obj.put(key, value)

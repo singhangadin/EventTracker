@@ -73,7 +73,7 @@ internal class EventDispatcher(
         if (optOutGuard.isOptedOut) return
         scope.launch {
             currentUserId = userId
-            adapters.forEach { adapter ->
+            for (adapter in adapters) {
                 try { adapter.identify(userId, traits) }
                 catch (t: Throwable) { logger.error(TAG, "identify failed in ${adapter.id}", t) }
             }
@@ -91,7 +91,7 @@ internal class EventDispatcher(
             db.eventDao().trimOldest(Int.MAX_VALUE)
             db.dlqDao().deleteAll()
         }
-        adapters.forEach { adapter ->
+        for (adapter in adapters) {
             try { adapter.onOptOut() }
             catch (t: Throwable) { logger.error(TAG, "onOptOut failed in ${adapter.id}", t) }
         }
@@ -134,8 +134,8 @@ internal class EventDispatcher(
         persistEvent(event)
 
         // Fan out to adapters
-        adapters.forEach { adapter ->
-            if (!adapter.accepts(event)) return@forEach
+        for (adapter in adapters) {
+            if (!adapter.accepts(event)) continue
             try {
                 val outcome = adapter.deliver(event)
                 when (outcome) {
@@ -186,7 +186,7 @@ internal class EventDispatcher(
     }
 
     private suspend fun flushAll() {
-        adapters.forEach { adapter ->
+        for (adapter in adapters) {
             try {
                 adapter.flush()
             } catch (t: Throwable) {

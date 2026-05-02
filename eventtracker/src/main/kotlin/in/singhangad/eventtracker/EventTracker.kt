@@ -83,7 +83,7 @@ object EventTracker {
             val sessionManager = SessionManager(appContext)
 
             // Inject config-level batchSize / maxRetries into BackendBatchAdapter before initialize()
-            config.adapters.forEach { adapter ->
+            for (adapter in config.adapters) {
                 if (adapter is BackendBatchAdapter) {
                     adapter.configure(config.batchSize, config.maxRetries)
                 }
@@ -225,7 +225,7 @@ object EventTracker {
 
             db.withTransaction {
                 dlqDao.deleteByIds(rows.map { it.id })
-                rows.forEach { dlq ->
+                for (dlq in rows) {
                     eventDao.insert(
                         EventEntity(
                             id = dlq.id,
