@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application>
+        <!--
+            lifecycle-process merges an InitializationProvider with authority
+            "${applicationId}.eventtracker-startup" into the library manifest, but
+            work-testing brings its own entry with "${applicationId}.androidx-startup".
+            tools:replace forces one declaration to win so the test APK manifest merges cleanly.
+        -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:replace="android:authorities" />
+    </application>
+
+</manifest>

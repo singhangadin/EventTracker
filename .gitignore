@@ -1,0 +1,22 @@
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Local Android SDK path — machine-specific, never commit
+local.properties
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+
+# Kotlin incremental compilation
+.kotlin/
+
+# Claude internal session files
+.claude/
+
+# Keystore files
+*.jks
+*.keystore
