@@ -50,7 +50,7 @@ class FirebaseAdapter : EventAdapter {
     override suspend fun identify(userId: String?, traits: Map<String, Any?>) {
         try {
             analytics.setUserId(userId)
-            traits.forEach { (key, value) ->
+            for ((key, value) in traits) {
                 analytics.setUserProperty(key.take(24), value?.toString()?.take(36))
             }
         } catch (t: Throwable) {
@@ -60,7 +60,7 @@ class FirebaseAdapter : EventAdapter {
 
     private fun buildBundle(properties: Map<String, Any?>): Bundle {
         val bundle = Bundle()
-        properties.forEach { (key, value) ->
+        for ((key, value) in properties) {
             val k = key.take(40) // Firebase key limit
             when (value) {
                 is String -> bundle.putString(k, value.take(100))
