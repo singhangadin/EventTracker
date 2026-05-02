@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>EventTracker</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            eventtracker
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":eventtracker:dokkaHtml/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="eventtracker::in.singhangad.eventtracker/EventTracker///PointingToDeclaration//221382672">
+  <div class="breadcrumbs"><a href="../../../index.html">eventtracker</a><span class="delimiter">/</span><a href="../index.html">in.singhangad.eventtracker</a><span class="delimiter">/</span><span class="current">EventTracker</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Event</span><wbr></wbr><span><span>Tracker</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">EventTracker</a></div><p class="paragraph">EventTracker is the single entry point for the EventTracker Android library.</p><p class="paragraph">The library captures events in the host app, persists them to a local database, and dispatches them to one or more configured in.singhangad.eventtracker.adapter.EventAdapter destinations. Network destinations use batched delivery with retry and dead-letter handling.</p><p class="paragraph">Initialization must happen exactly once per process, typically in <code class="lang-kotlin">Application.onCreate</code>. After initialization, all calls are safe from any thread.</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">EventTracker.initialize(<br>    context = applicationContext,<br>    config = EventTrackerConfig.Builder()<br>        .addAdapter(BackendBatchAdapter(endpoint = &quot;https://api.example.com/v1/events&quot;))<br>        .addAdapter(FirebaseAdapter()) // requires :eventtracker-adapter-firebase<br>        .batchSize(50)<br>        .batchIntervalMs(30_000)<br>        .maxRetries(8)<br>        .build()<br>)<br><br>EventTracker.track(&quot;checkout_started&quot;, mapOf(&quot;cart_size&quot; to 3))</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><span class="kdoc-tag"><h4 class="">Since</h4><p class="paragraph">1.0.0</p></span><h4 class="">See also</h4><div class="table"><div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-event-tracker-config/index.html"><span>Event</span><wbr></wbr><span>Tracker</span><wbr></wbr><span><span>Config</span></span></a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><span>in.</span><wbr></wbr><span>singhangad.</span><wbr></wbr><span>eventtracker.</span><wbr></wbr><span>adapter.</span><wbr></wbr><span>Event</span><wbr></wbr><span><span>Adapter</span></span></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="617244625%2FFunctions%2F221382672" anchor-label="deadLetterSize" id="617244625%2FFunctions%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dead-letter-size.html"><span>dead</span><wbr></wbr><span>Letter</span><wbr></wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="617244625%2FFunctions%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="dead-letter-size.html"><span class="token function">deadLetterSize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Number of events currently in the dead-letter queue.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-626871950%2FFunctions%2F221382672" anchor-label="diagnostics" id="-626871950%2FFunctions%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="diagnostics.html"><span><span>diagnostics</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-626871950%2FFunctions%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="diagnostics.html"><span class="token function">diagnostics</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-diagnostics/index.html">Diagnostics</a></div><div class="brief "><p class="paragraph">Snapshot of internal counters for observability. Values are monotonically increasing within a process lifetime and reset to zero on process start.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="286851034%2FFunctions%2F221382672" anchor-label="flush" id="286851034%2FFunctions%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="flush.html"><span><span>flush</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="286851034%2FFunctions%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="flush.html"><span class="token function">flush</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/Job///PointingToDeclaration/">Job</span></div><div class="brief "><p class="paragraph">Force an immediate flush of all queued backend events, bypassing batch-size and batch-interval triggers. The returned <span data-unresolved-link="kotlinx.coroutines/Job///PointingToDeclaration/">Job</span> completes when the flush attempt finishes.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2039600322%2FFunctions%2F221382672" anchor-label="identify" id="2039600322%2FFunctions%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="identify.html"><span><span>identify</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2039600322%2FFunctions%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="identify.html"><span class="token function">identify</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">userId<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">traits<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Associate a stable user identifier and optional user traits with the current session. Subsequent events will carry this user id until <a href="reset.html">reset</a> is called.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1014369583%2FFunctions%2F221382672" anchor-label="initialize" id="1014369583%2FFunctions%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initialize.html"><span><span>initialize</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1014369583%2FFunctions%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="initialize.html"><span class="token function">initialize</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span></span><span class="parameter ">config<span class="token operator">: </span><a href="../-event-tracker-config/index.html">EventTrackerConfig</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Initialize the library. Safe to call multiple times; subsequent calls are no-ops and log a warning. Must be called before any <a href="track.html">track</a> or <a href="identify.html">identify</a> call.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1180978654%2FFunctions%2F221382672" anchor-label="purgeDeadLetters" id="1180978654%2FFunctions%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="purge-dead-letters.html"><span>purge</span><wbr></wbr><span>Dead</span><wbr></wbr><span><span>Letters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1180978654%2FFunctions%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="purge-dead-letters.html"><span class="token function">purgeDeadLetters</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Permanently delete all DLQ entries.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-254152678%2FFunctions%2F221382672" anchor-label="replayDeadLetters" id="-254152678%2FFunctions%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="replay-dead-letters.html"><span>replay</span><wbr></wbr><span>Dead</span><wbr></wbr><span><span>Letters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-254152678%2FFunctions%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="replay-dead-letters.html"><span class="token function">replayDeadLetters</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">limit<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">500</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Move up to <a href="replay-dead-letters.html">limit</a> DLQ rows back into the live queue, with <code class="lang-kotlin">attempt_count</code> reset to zero. Useful after a backend fix.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="169916399%2FFunctions%2F221382672" anchor-label="reset" id="169916399%2FFunctions%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="reset.html"><span><span>reset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="169916399%2FFunctions%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="reset.html"><span class="token function">reset</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Forget the current user and start a new anonymous session. Does not clear queued events; those continue to be delivered with the user id they were tracked under.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="377559910%2FFunctions%2F221382672" anchor-label="setOptOut" id="377559910%2FFunctions%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-opt-out.html"><span>set</span><wbr></wbr><span>Opt</span><wbr></wbr><span><span>Out</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="377559910%2FFunctions%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-opt-out.html"><span class="token function">setOptOut</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">optedOut<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Set the opt-out flag. When <code class="lang-kotlin">true</code>, all subsequent <a href="track.html">track</a> and <a href="identify.html">identify</a> calls are dropped silently. Already-persisted events are NOT deleted unless <a href="wipe-local-data.html">wipeLocalData</a> is also called.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-65699206%2FFunctions%2F221382672" anchor-label="track" id="-65699206%2FFunctions%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="track.html"><span><span>track</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-65699206%2FFunctions%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="track.html"><span class="token function">track</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">properties<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()<span class="token punctuation">, </span></span><span class="parameter ">destinations<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Track an event. Returns immediately; persistence and delivery happen on a background dispatcher.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1619884048%2FFunctions%2F221382672" anchor-label="wipeLocalData" id="-1619884048%2FFunctions%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="wipe-local-data.html"><span>wipe</span><wbr></wbr><span>Local</span><wbr></wbr><span><span>Data</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1619884048%2FFunctions%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="wipe-local-data.html"><span class="token function">wipeLocalData</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/Job///PointingToDeclaration/">Job</span></div><div class="brief "><p class="paragraph">Delete all locally persisted events, including the dead-letter queue. Intended for GDPR / opt-out compliance and QA reset. Does not affect events already delivered to destinations.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2026 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

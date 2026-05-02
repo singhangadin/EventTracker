@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Diagnostics</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            eventtracker
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":eventtracker:dokkaHtml/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="eventtracker::in.singhangad.eventtracker/Diagnostics///PointingToDeclaration//221382672">
+  <div class="breadcrumbs"><a href="../../../index.html">eventtracker</a><span class="delimiter">/</span><a href="../index.html">in.singhangad.eventtracker</a><span class="delimiter">/</span><span class="current">Diagnostics</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Diagnostics</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">Diagnostics</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>tracked<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>dropped<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>persisted<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>delivered<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>retrying<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>deadLettered<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>queueDepth<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">Read-only snapshot of internal counters. Values are monotonically increasing within a process lifetime and reset to zero on process start.</p><span class="kdoc-tag"><h4 class="">Since</h4><p class="paragraph">1.0.0</p></span></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-1237302191%2FConstructors%2F221382672" anchor-label="Diagnostics" id="-1237302191%2FConstructors%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-diagnostics.html"><span><span>Diagnostics</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1237302191%2FConstructors%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tracked<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">dropped<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">persisted<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">delivered<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">retrying<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">deadLettered<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">queueDepth<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1069435809%2FProperties%2F221382672" anchor-label="deadLettered" id="1069435809%2FProperties%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dead-lettered.html"><span>dead</span><wbr></wbr><span><span>Lettered</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1069435809%2FProperties%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="dead-lettered.html">deadLettered</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Events moved to the dead-letter queue.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1924698956%2FProperties%2F221382672" anchor-label="delivered" id="1924698956%2FProperties%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="delivered.html"><span><span>delivered</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1924698956%2FProperties%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="delivered.html">delivered</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Events successfully delivered to all required adapters.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1030639536%2FProperties%2F221382672" anchor-label="dropped" id="-1030639536%2FProperties%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dropped.html"><span><span>dropped</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1030639536%2FProperties%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="dropped.html">dropped</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Events rejected by validation, sampling, or opt-out.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1839918397%2FProperties%2F221382672" anchor-label="persisted" id="1839918397%2FProperties%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="persisted.html"><span><span>persisted</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1839918397%2FProperties%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="persisted.html">persisted</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Events written to the local database.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2063623528%2FProperties%2F221382672" anchor-label="queueDepth" id="-2063623528%2FProperties%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="queue-depth.html"><span>queue</span><wbr></wbr><span><span>Depth</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2063623528%2FProperties%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="queue-depth.html">queueDepth</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Current number of un-delivered rows in events table.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1404325168%2FProperties%2F221382672" anchor-label="retrying" id="-1404325168%2FProperties%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="retrying.html"><span><span>retrying</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1404325168%2FProperties%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="retrying.html">retrying</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Events currently waiting for a retry attempt.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1862306854%2FProperties%2F221382672" anchor-label="tracked" id="1862306854%2FProperties%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="tracked.html"><span><span>tracked</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1862306854%2FProperties%2F221382672"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="tracked.html">tracked</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Total events accepted by <a href="../-event-tracker/track.html">EventTracker.track</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2026 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

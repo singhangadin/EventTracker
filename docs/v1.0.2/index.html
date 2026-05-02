@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>eventtracker</title>
+    <link href="images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="scripts/sourceset_dependencies.js" async="async"></script>
+<link href="styles/style.css" rel="Stylesheet">
+<link href="styles/main.css" rel="Stylesheet">
+<link href="styles/prism.css" rel="Stylesheet">
+<link href="styles/logo-styles.css" rel="Stylesheet">
+<link href="styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="index.html">
+                            eventtracker
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":eventtracker:dokkaHtml/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" id="content" pageIds="eventtracker::////PointingToDeclaration//221382672">
+  <div class="breadcrumbs"></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>eventtracker</span></span></h1>
+    <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":eventtracker:dokkaHtml/release"><p class="paragraph">EventTracker is a lightweight, modular Android library for capturing analytics events from a host application and dispatching them reliably to one or more downstream destinations.</p><p class="paragraph">Initialize once in <code class="lang-kotlin">Application.onCreate()</code>:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">EventTracker.initialize(<br>    context = applicationContext,<br>    config = EventTrackerConfig.Builder()<br>        .addAdapter(BackendBatchAdapter(endpoint = &quot;https://api.example.com/v1/events&quot;))<br>        .addAdapter(FirebaseAdapter())<br>        .batchSize(50)<br>        .batchIntervalMs(30_000)<br>        .maxRetries(8)<br>        .build()<br>)</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Then track events from anywhere:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">EventTracker.track(&quot;checkout_started&quot;, mapOf(&quot;cart_size&quot; to 3))</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">The public API is centred on EventTracker, the singleton entry point. Configuration is built with EventTrackerConfig.Builder. Destinations implement in.singhangad.eventtracker.adapter.EventAdapter; built-in options are in.singhangad.eventtracker.adapter.BackendBatchAdapter for batched HTTP delivery and in.singhangad.eventtracker.adapter.LoggingAdapter for Logcat output during development. Runtime counters are exposed via Diagnostics.</p><p class="paragraph">The <code class="lang-kotlin">in.singhangad.eventtracker</code> package contains the public API. Adapter implementations live in <code class="lang-kotlin">in.singhangad.eventtracker.adapter</code>. Internal implementation details are excluded from this documentation.</p></div></div>
+  </div>
+  <h2 class="">Packages</h2>
+  <div class="table"><a data-name="-716256255%2FPackages%2F221382672" anchor-label="in.singhangad.eventtracker" id="-716256255%2FPackages%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="eventtracker/in.singhangad.eventtracker/index.html">in.singhangad.eventtracker</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-716256255%2FPackages%2F221382672"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1669695778%2FPackages%2F221382672" anchor-label="in.singhangad.eventtracker.adapter" id="1669695778%2FPackages%2F221382672" data-filterable-set=":eventtracker:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":eventtracker:dokkaHtml/release" data-filterable-set=":eventtracker:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="eventtracker/in.singhangad.eventtracker.adapter/index.html">in.singhangad.eventtracker.adapter</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1669695778%2FPackages%2F221382672"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2026 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
