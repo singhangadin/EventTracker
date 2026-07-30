@@ -338,11 +338,24 @@ class BackendBatchAdapter(
     }
 
     /**
-     * Parse Retry-After header as milliseconds. Supports both integer seconds and HTTP-date.
+     * Parse Retry-After header as milliseconds. Supports both integer seconds ("120") and the
+     * HTTP-date form ("Wed, 21 Oct 2026 07:28:00 GMT"), per RFC 7231 §7.1.3. A date in the past,
+     * or an unparseable value, yields `null`.
      */
     private fun parseRetryAfter(value: String?): Long? {
         if (value == null) return null
-        return value.toLongOrNull()?.let { it * 1000L }
+
+        // Delta-seconds form.
+        value.trim().toLongOrNull()?.let { return if (it >= 0) it * 1000L else null }
+
+        // HTTP-date form.
+        return try {
+            val epochMs = java.util.Date(value.trim()).time
+            val deltaMs = epochMs - System.currentTimeMillis()
+            if (deltaMs > 0) deltaMs else null
+        } catch (_: Exception) {
+            null
+        }
     }
 
     // ---- Data helpers -----------------------------------------------------------------------

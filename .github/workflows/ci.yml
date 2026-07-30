@@ -30,3 +30,15 @@ jobs:
 
       - name: Build
         run: ./gradlew build
+
+      - name: Coverage report
+        run: ./gradlew jacocoTestReport :eventtracker:printCoverage :eventtracker-adapter-firebase:printCoverage
+
+      - name: Upload coverage reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-coverage
+          path: |
+            eventtracker/build/reports/jacoco/jacocoTestReport/
+            eventtracker-adapter-firebase/build/reports/jacoco/jacocoTestReport/
