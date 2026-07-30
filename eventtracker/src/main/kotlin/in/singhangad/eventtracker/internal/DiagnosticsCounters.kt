@@ -21,4 +21,10 @@ internal class DiagnosticsCounters {
         deadLettered = deadLettered.get(),
         queueDepth = queueDepth.get(),
     )
+
+    /** Testing only: zero every counter. */
+    internal fun reset() {
+        tracked.set(0); dropped.set(0); persisted.set(0); delivered.set(0)
+        retrying.set(0); deadLettered.set(0); queueDepth.set(0)
+    }
 }

@@ -64,14 +64,14 @@ class EventDispatcherExtraTest {
         return d
     }
 
-    private fun EventDispatcher.drain() = runBlocking { flush().join() }
+    private fun EventDispatcher.drain() = runBlocking { awaitIdle() }
 
     @Test
     fun `non-primitive property values are coerced to strings`() = runBlocking {
         data class Point(val x: Int, val y: Int)
         val d = dispatcher(CollectingAdapter())
         d.track("evt", mapOf("p" to Point(1, 2), "n" to 5), null)
-        d.flush().join()
+        d.awaitIdle()
 
         val row = db.eventDao().nextBatch(Long.MAX_VALUE, 10).single()
         assertTrue(row.payloadJson.contains("Point(x=1, y=2)"))
@@ -82,7 +82,7 @@ class EventDispatcherExtraTest {
     fun `nested maps and lists are preserved through sanitisation`() = runBlocking {
         val d = dispatcher(CollectingAdapter())
         d.track("evt", mapOf("list" to listOf(1, 2), "map" to mapOf("a" to "b")), null)
-        d.flush().join()
+        d.awaitIdle()
         val row = db.eventDao().nextBatch(Long.MAX_VALUE, 10).single()
         assertTrue(row.payloadJson.contains("list"))
         assertTrue(row.payloadJson.contains("map"))
@@ -140,7 +140,8 @@ class EventDispatcherExtraTest {
     fun `flush swallows adapter exceptions`() {
         val d = dispatcher(ThrowingAdapter())
         d.track("e", emptyMap(), null)
-        d.drain() // ThrowingAdapter.flush throws; must be caught
+        // ThrowingAdapter.flush throws; flushAll must catch it.
+        runBlocking { d.awaitIdle(); d.flush().join() }
         // No assertion needed beyond "did not crash", but confirm the counter moved.
         assertEquals(1L, counters.tracked.get())
     }
@@ -149,7 +150,7 @@ class EventDispatcherExtraTest {
     fun `wipeLocalData swallows adapter onOptOut exceptions`() = runBlocking {
         val d = dispatcher(ThrowingAdapter())
         d.track("e", emptyMap(), null)
-        d.flush().join()
+        d.awaitIdle() // ensure the event is persisted before wiping
         d.wipeLocalData().join() // ThrowingAdapter.onOptOut throws; must be caught
         assertEquals(0L, db.eventDao().count())
     }

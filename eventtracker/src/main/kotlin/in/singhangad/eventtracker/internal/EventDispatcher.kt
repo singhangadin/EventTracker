@@ -229,4 +229,21 @@ internal class EventDispatcher(
             db.eventDao().resetSendingToQueued()
         }
     }
+
+    /**
+     * Testing only: suspend until every queued track/identify/flush/wipe job has fully drained.
+     *
+     * The public operations hand off to [scope] and return immediately, and their handlers yield
+     * this single thread while awaiting Room I/O, so a plain `flush().join()` cannot guarantee a
+     * prior `track()` finished delivering. Joining all active child jobs gives tests a
+     * deterministic barrier.
+     */
+    internal suspend fun awaitIdle() {
+        val job = scope.coroutineContext[Job] ?: return
+        while (true) {
+            val active = job.children.filter { it.isActive }.toList()
+            if (active.isEmpty()) return
+            active.forEach { it.join() }
+        }
+    }
 }

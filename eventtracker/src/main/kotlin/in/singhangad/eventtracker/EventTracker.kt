@@ -14,6 +14,7 @@ import `in`.singhangad.eventtracker.internal.db.EventState
 import androidx.room.withTransaction
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -272,6 +273,25 @@ object EventTracker {
     internal fun newSessionInternal() {
         if (!isInitialized) return
         dispatcher.onForeground()
+    }
+
+    /**
+     * Testing only. Tears the singleton back down to its pre-`initialize` state so a subsequent
+     * [initialize] takes effect. Robolectric can reuse a sandbox (and therefore this object's
+     * static state) across test methods, so tests call this in setup/teardown to stay isolated.
+     */
+    internal fun resetForTesting() {
+        synchronized(this) {
+            if (::flushScheduler.isInitialized) runCatching { flushScheduler.stop() }
+            if (::dispatcher.isInitialized) runCatching { dispatcher.scope.cancel() }
+            counters.reset()
+            isInitialized = false
+        }
+    }
+
+    /** Testing only: await a full drain of the dispatcher (see [EventDispatcher.awaitIdle]). */
+    internal suspend fun awaitIdleForTesting() {
+        if (isInitialized) dispatcher.awaitIdle()
     }
 
     // ---- Helpers ----------------------------------------------------------------------------

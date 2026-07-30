@@ -34,6 +34,8 @@ class EventTrackerTest {
     @Before
     fun setup() {
         context = ApplicationProvider.getApplicationContext()
+        // Robolectric may reuse a sandbox across tests, so clear any leaked singleton state first.
+        EventTracker.resetForTesting()
         WorkManagerTestInitHelper.initializeTestWorkManager(context)
         clearPrefs()
         db = Room.inMemoryDatabaseBuilder(context, EventDatabase::class.java)
@@ -45,6 +47,7 @@ class EventTrackerTest {
 
     @After
     fun teardown() {
+        EventTracker.resetForTesting() // stop scheduler / cancel dispatcher before closing the db
         db.close()
         EventDatabase.clearTestInstance()
         clearPrefs()
@@ -63,7 +66,10 @@ class EventTrackerTest {
         return config
     }
 
-    private fun drainFlush() = runBlocking { EventTracker.flush().join() }
+    private fun drainFlush() = runBlocking {
+        EventTracker.flush().join()
+        EventTracker.awaitIdleForTesting() // also wait for track/identify handlers to finish
+    }
 
     // ---- initialization ----
 
@@ -156,10 +162,11 @@ class EventTrackerTest {
     fun `wipeLocalData clears events and DLQ and notifies adapters`() = runBlocking {
         init()
         EventTracker.track("e1"); EventTracker.track("e2")
-        EventTracker.flush().join()
+        EventTracker.awaitIdleForTesting() // ensure both events are persisted before wiping
         db.dlqDao().insert(dlq("z"))
 
         EventTracker.wipeLocalData().join()
+        EventTracker.awaitIdleForTesting()
 
         assertEquals(0L, db.eventDao().count())
         assertEquals(0L, db.dlqDao().count())
