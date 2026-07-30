@@ -1,6 +1,8 @@
 package `in`.singhangad.eventtracker
 
 import `in`.singhangad.eventtracker.adapter.BackendBatchAdapter
+import `in`.singhangad.eventtracker.internal.EventLogger
+import `in`.singhangad.eventtracker.internal.NoOpLogger
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -106,5 +108,38 @@ class EventTrackerConfigBuilderTest {
             .encryptAtRest(true)
             .build()
         assertTrue(config.encryptAtRest)
+    }
+
+    @Test
+    fun `default logger is the NoOpLogger`() {
+        val config = EventTrackerConfig.Builder().addAdapter(adapterA()).build()
+        assertSame(NoOpLogger, config.logger)
+    }
+
+    @Test
+    fun `custom logger is forwarded`() {
+        val custom = object : EventLogger {
+            override fun verbose(tag: String, message: String) {}
+            override fun debug(tag: String, message: String) {}
+            override fun info(tag: String, message: String) {}
+            override fun warn(tag: String, message: String) {}
+            override fun error(tag: String, message: String, throwable: Throwable?) {}
+        }
+        val config = EventTrackerConfig.Builder().addAdapter(adapterA()).logger(custom).build()
+        assertSame(custom, config.logger)
+    }
+
+    @Test
+    fun `maxLocalEvents above the minimum is preserved`() {
+        val config = EventTrackerConfig.Builder().addAdapter(adapterA()).maxLocalEvents(25_000).build()
+        assertEquals(25_000, config.maxLocalEvents)
+    }
+
+    @Test
+    fun `default constants expose the documented values`() {
+        assertEquals(50, EventTrackerConfig.DEFAULT_BATCH_SIZE)
+        assertEquals(30_000L, EventTrackerConfig.DEFAULT_BATCH_INTERVAL_MS)
+        assertEquals(8, EventTrackerConfig.DEFAULT_MAX_RETRIES)
+        assertEquals(10_000, EventTrackerConfig.DEFAULT_MAX_LOCAL_EVENTS)
     }
 }

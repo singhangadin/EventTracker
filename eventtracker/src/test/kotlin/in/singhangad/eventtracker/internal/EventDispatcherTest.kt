@@ -69,8 +69,8 @@ class EventDispatcherTest {
         context.getSharedPreferences("eventtracker_session", Context.MODE_PRIVATE).edit().clear().commit()
     }
 
-    /** Drains the single-threaded scope: flush() queues behind all prior track() jobs. */
-    private fun drain() = runBlocking { dispatcher.flush().join() }
+    /** Drains the single-threaded scope: waits for all queued track/flush/etc. jobs to finish. */
+    private fun drain() = runBlocking { dispatcher.awaitIdle() }
 
     // ---- track ---
 
@@ -167,12 +167,12 @@ class EventDispatcherTest {
         )
         // Insert 3 events first
         repeat(3) { i -> smallCapDispatcher.track("event_$i", emptyMap(), null) }
-        smallCapDispatcher.flush().join()
+        smallCapDispatcher.awaitIdle()
         assertEquals(3L, db.eventDao().count())
 
         // 4th event should trigger a trim
         smallCapDispatcher.track("event_overflow", emptyMap(), null)
-        smallCapDispatcher.flush().join()
+        smallCapDispatcher.awaitIdle()
 
         // Cap is 3; the oldest should have been removed
         assertEquals(3L, db.eventDao().count())
@@ -226,7 +226,7 @@ class EventDispatcherTest {
     fun wipeLocalData_clears_db_and_calls_onOptOut() = runBlocking {
         dispatcher.track("e1", emptyMap(), null)
         dispatcher.track("e2", emptyMap(), null)
-        dispatcher.flush().join()
+        dispatcher.awaitIdle() // ensure both events are persisted before wiping
 
         dispatcher.wipeLocalData().join()
 

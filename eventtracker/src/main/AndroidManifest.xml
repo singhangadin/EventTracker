@@ -10,6 +10,7 @@
             android:authorities="${applicationId}.eventtracker-startup"
             android:exported="false"
             tools:node="merge"
+            tools:replace="android:authorities"
             xmlns:tools="http://schemas.android.com/tools">
         </provider>
     </application>
