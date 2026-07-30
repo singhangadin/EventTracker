@@ -1,4 +1,5 @@
 import org.jetbrains.dokka.gradle.DokkaTask
+import org.gradle.testing.jacoco.plugins.JacocoTaskExtension
 
 plugins {
     id("com.android.library")
@@ -11,6 +12,16 @@ plugins {
 
 jacoco {
     toolVersion = "0.8.12"
+}
+
+// Robolectric loads app classes in its own sandbox classloader and rewrites their debug info;
+// without includeNoLocationClasses, JaCoCo discards coverage for every Robolectric-executed
+// class (reporting them as 0%). This flag keeps that coverage.
+tasks.withType<Test>().configureEach {
+    configure<JacocoTaskExtension> {
+        isIncludeNoLocationClasses = true
+        excludes = listOf("jdk.internal.*")
+    }
 }
 
 android {

@@ -9,6 +9,16 @@ jacoco {
     toolVersion = "0.8.12"
 }
 
+// Robolectric rewrites debug info in its sandbox classloader; without includeNoLocationClasses,
+// JaCoCo reports every Robolectric-executed class as 0% (the FirebaseAdapter is entirely
+// Robolectric-driven, so its whole coverage was being dropped).
+tasks.withType<Test>().configureEach {
+    configure<org.gradle.testing.jacoco.plugins.JacocoTaskExtension> {
+        isIncludeNoLocationClasses = true
+        excludes = listOf("jdk.internal.*")
+    }
+}
+
 android {
     namespace = "in.singhangad.eventtracker.adapter.firebase"
     compileSdk = 34
