@@ -18,6 +18,7 @@ import org.mockito.MockedStatic
 import org.mockito.Mockito
 import org.mockito.kotlin.any
 import org.mockito.kotlin.argumentCaptor
+import org.mockito.kotlin.doThrow
 import org.mockito.kotlin.eq
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
@@ -92,7 +93,8 @@ class FirebaseAdapterTest {
 
     @Test
     fun `deliver returns RetryableFailure when logEvent throws`() = runBlocking {
-        whenever(analytics.logEvent(any(), any())).thenThrow(RuntimeException("boom"))
+        // logEvent is a void method: use doThrow(...).whenever(mock) form.
+        doThrow(RuntimeException("boom")).whenever(analytics).logEvent(any(), any())
         val outcome = adapter.deliver(event())
         assertTrue(outcome is DeliveryOutcome.RetryableFailure)
     }
@@ -156,7 +158,8 @@ class FirebaseAdapterTest {
 
     @Test
     fun `identify swallows exceptions from the Firebase SDK`() = runBlocking {
-        whenever(analytics.setUserId("boom")).thenThrow(RuntimeException("firebase down"))
+        // setUserId is a void method: use doThrow(...).whenever(mock) form.
+        doThrow(RuntimeException("firebase down")).whenever(analytics).setUserId("boom")
         // Must not propagate.
         adapter.identify("boom", emptyMap())
     }

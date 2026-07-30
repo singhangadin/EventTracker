@@ -42,7 +42,7 @@ class DeliveryOutcomeAndAdapterTest {
         val p = DeliveryOutcome.PermanentFailure(cause)
         assertSame(cause, p.cause)
         assertEquals(p, DeliveryOutcome.PermanentFailure(cause))
-        assertNotEquals<DeliveryOutcome>(p, DeliveryOutcome.Success)
+        assertNotEquals(p as DeliveryOutcome, DeliveryOutcome.Success)
     }
 
     /** Minimal adapter that overrides only the required members, exercising the interface defaults. */
